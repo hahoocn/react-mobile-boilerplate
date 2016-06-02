@@ -1,0 +1,11 @@
+logs
+*.log
+npm-debug.log*
+node_modules
+.npm
+coverage
+build
+stats.json
+
+.DS_Store
+.idea
