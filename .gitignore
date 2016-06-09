@@ -6,6 +6,13 @@ node_modules
 coverage
 build
 stats.json
+.module-cache
 
 .DS_Store
 .idea
+*.iml
+.vscode
+dist
+
+webpack-assets.json
+webpack-stats.json
