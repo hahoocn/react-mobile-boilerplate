@@ -20,7 +20,6 @@ const webpackConfig = {
   //devtool: 'source-map',
   entry: {
     main: [
-      'react-hot-loader/patch',
       'webpack-dev-server/client?' + host,
       'webpack/hot/only-dev-server',
       srcPath + 'index'
@@ -33,7 +32,7 @@ const webpackConfig = {
   },
   module: {
     loaders: [
-      { test: /\.(jsx|js)$/, include: srcPath, loaders: ['babel', 'eslint']},
+      { test: /\.(jsx|js)$/, include: srcPath, loaders: ['react-hot', 'babel', 'eslint']},
       { test: /\.json$/, include: srcPath, loader: 'json' },
       { test: /\.css$/, include: srcPath, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss') },
       { test: /\.(jpe?g|png|gif|svg)$/, include: srcPath, loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{progressive:true, optimizationLevel: 7, svgo:{removeTitle:true,removeViewBox:false,removeRasterImages:true,sortAttrs:true,removeAttrs:false}}' },
