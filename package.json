@@ -8,7 +8,8 @@
     "start": "NODE_ENV=development && PORT=3000 && node webpack/devServer.js",
     "dev": "npm run start",
     "build": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
-    "profile": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > profile.json"
+    "profile": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > profile.json",
+    "clean": "rimraf build"
   },
   "repository": {
     "type": "git",
@@ -54,6 +55,7 @@
     "postcss-simple-vars": "^2.0.0",
     "react-hot-loader": "^1.3.0",
     "redux-devtools": "^3.3.1",
+    "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
