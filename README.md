@@ -60,3 +60,26 @@ A simple boilerplate for build mobile web app (spa).
 #### Git
   - [git](https://git-scm.com/) (distributed version control system )
   - [github](https://github.com/) (You know!)
+
+## Installation
+You'll need to have [Node.js](https://nodejs.org) to get started.
+````
+$ git clone https://github.com/hahoocn/react-mobile-boilerplate.git
+$ npm install
+````
+
+## Running Dev Server (Development)
+````
+$ npm run dev
+````
+Open http://localhost:3000 in your browser.
+
+## Build (Production)
+````
+$ npm run build
+````
+
+## Clean Build Folder
+````
+$ npm run clean
+````
