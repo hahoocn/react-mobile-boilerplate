@@ -1,20 +1,22 @@
 # react-mobile-boilerplate
 A simple boilerplate for build mobile web app (spa).
 
-### Stack
-- ##### React
+## Stack
+#### React
   - [React](https://facebook.github.io/react/) (A JavaScript library for creating user interfaces by Facebook and Instagram. )
   - [React Router](https://github.com/reactjs/react-router) (Complete routing library for React.)
   - [React Router Redux](https://github.com/reactjs/react-router-redux) (Helps you keep that bit of state in sync with your Redux store)
   - [React Redux](https://github.com/reactjs/react-redux) (Official React bindings for Redux.)
-- ##### Redux
+
+#### Redux
   - [Redux](https://github.com/reactjs/redux) (A predictable state container for JavaScript apps.)
   - [Redux Thunk](https://github.com/gaearon/redux-thunk) (Thunk middleware for Redux.)
   - [Redux DevTools](https://github.com/gaearon/redux-devtools) (A live-editing time travel environment for Redux.)
   - [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension) (A chrome extension for redux)
-- ##### Webpack
+
+#### Webpack
   - [Webpack](http://webpack.github.io/) (A module bundler.)
-  - Loaders
+  - Webpack Loaders
     - [React Hot Loader](http://gaearon.github.io/react-hot-loader/) (Tweak React components in real time.)
     - [url-loader](https://github.com/webpack/url-loader) (Can return a Data Url if the file is smaller than a limit.)
     - [json-loader](https://github.com/webpack/json-loader) (Loads file as JSON)
@@ -24,7 +26,7 @@ A simple boilerplate for build mobile web app (spa).
     - [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader) (Minify PNG, JPEG, GIF and SVG images with imagemin)
     -  [postcss-loader](https://github.com/postcss/postcss-loader) (PostCSS loader for webpack to postprocesses your CSS with PostCSS plugins.)
     - [babel-loader](https://github.com/babel/babel-loader) (Transpiling JavaScript files using Babel and webpack.)
-  - Plugins
+  - Webpack Plugins
     - [Clean for webpack](https://github.com/johnagan/clean-webpack-plugin) (A webpack plugin to remove/clean your build folder(s) before building)
     - [HTML Webpack Plugin](https://github.com/ampedandwired/html-webpack-plugin) (Simplifies creation of HTML files to serve your webpack bundles.)
     - [Extract text plugin for webpack](https://github.com/webpack/extract-text-webpack-plugin) (It moves every require("style.css") in entry chunks into a separate css output file.)
@@ -38,7 +40,8 @@ A simple boilerplate for build mobile web app (spa).
     - [PostCSS Mixins](https://github.com/postcss/postcss-mixins) (PostCSS plugin for mixins.)
     - [PostCSS Simple Variables](https://github.com/postcss/postcss-simple-vars) (PostCSS plugin for Sass-like variables.)
     - [cssnano](http://cssnano.co/) (cssnano takes your nicely formatted CSS and runs it through many focused optimisations, to ensure that the final result is as small as possible for a production environment. ) cssnano is bundled with css-loader
-- ##### Babel
+
+#### Babel
   - [babel](http://babeljs.io/)
   - [React preset](http://babeljs.io/docs/plugins/preset-react/) (Strip flow types and transform JSX into createElement calls.)
   - [ES2015 preset](http://babeljs.io/docs/plugins/preset-es2015/) (All you need to compile ES2015 to ES5)
@@ -46,11 +49,14 @@ A simple boilerplate for build mobile web app (spa).
   - [.babelrc](http://babeljs.io/docs/usage/babelrc/) (Babel config file)
   - [babel-eslint](https://github.com/babel/babel-eslint) (ESLint using Babel as the parser.)
   - [babel-loader](https://github.com/babel/babel-loader) (Transpiling JavaScript files using Babel and webpack.)
-- ##### ESLint
+
+#### ESLint
   - [ESLint](http://eslint.org/) (The pluggable linting utility for JavaScript and JSX.)
   - [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) (This package provides Airbnb's .eslintrc as an extensible shared config. [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react): A mostly reasonable approach to React and JSX)
-- ##### EditorConfig
+
+#### EditorConfig
   - [EditorConfig](http://editorconfig.org/) (EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs.)
-- ##### Git
+
+#### Git
   - [git](https://git-scm.com/) (distributed version control system )
   - [github](https://github.com/) (You know!)
