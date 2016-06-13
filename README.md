@@ -42,7 +42,7 @@ A simple boilerplate for build mobile web app (spa).
     - [cssnano](http://cssnano.co/) (cssnano takes your nicely formatted CSS and runs it through many focused optimisations, to ensure that the final result is as small as possible for a production environment. ) cssnano is bundled with css-loader
 
 #### Babel
-  - [babel](http://babeljs.io/)
+  - [babel](http://babeljs.io/) (Babel is a generic multi-purpose compiler for JavaScript. Using Babel you can use the next generation of JavaScript, as well as the next generation of JavaScript tooling.)
   - [React preset](http://babeljs.io/docs/plugins/preset-react/) (Strip flow types and transform JSX into createElement calls.)
   - [ES2015 preset](http://babeljs.io/docs/plugins/preset-es2015/) (All you need to compile ES2015 to ES5)
   - [Stage 1 preset](http://babeljs.io/docs/plugins/preset-stage-1/) (use stage 1 [and greater] plugins)
