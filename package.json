@@ -46,8 +46,6 @@
     "html-webpack-plugin": "^2.19.0",
     "image-webpack-loader": "^1.8.0",
     "json-loader": "^0.5.4",
-    "less": "^2.7.1",
-    "less-loader": "^2.2.3",
     "postcss": "^5.0.21",
     "postcss-loader": "^0.9.1",
     "postcss-mixins": "^4.0.2",
