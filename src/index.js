@@ -1,14 +1,14 @@
-//import 'babel-polyfill'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { Router, browserHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
-import configureStore from './store/configureStore'
-import routes from './routes'
+// import 'babel-polyfill'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import configureStore from './store/configureStore';
+import routes from './routes';
 
-const store = configureStore()
-const history = syncHistoryWithStore(browserHistory, store)
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 /* global document */
 const rootEl = document.getElementById('container');
@@ -18,4 +18,4 @@ ReactDOM.render(
     <Router routes={routes()} history={history} />
   </Provider>,
   rootEl
-)
+);
