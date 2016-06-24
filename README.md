@@ -10,6 +10,7 @@ A simple boilerplate for build mobile web app (spa).
 
 #### Redux
   - [Redux](https://github.com/reactjs/redux) (A predictable state container for JavaScript apps.)
+  - [redux-act-reducer](https://github.com/hahoocn/redux-act-reducer) (A lib to create actions and reducers for Redux)
   - [Redux Thunk](https://github.com/gaearon/redux-thunk) (Thunk middleware for Redux.)
   - [Redux DevTools](https://github.com/gaearon/redux-devtools) (A live-editing time travel environment for Redux.)
   - [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension) (A chrome extension for redux)
@@ -49,6 +50,7 @@ A simple boilerplate for build mobile web app (spa).
   - [.babelrc](http://babeljs.io/docs/usage/babelrc/) (Babel config file)
   - [babel-eslint](https://github.com/babel/babel-eslint) (ESLint using Babel as the parser.)
   - [babel-loader](https://github.com/babel/babel-loader) (Transpiling JavaScript files using Babel and webpack.)
+  - [babel-polyfill](http://babeljs.io/docs/usage/polyfill/) (This will emulate a full ES2015 environment and is intended to be used in an application rather than a library/tool.)
 
 #### ESLint
   - [ESLint](http://eslint.org/) (The pluggable linting utility for JavaScript and JSX.)
