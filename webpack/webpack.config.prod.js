@@ -16,7 +16,7 @@ const distPath = path.join(rootPath, '/build/');
 var webpackConfig = {
   devtool: false,
   entry: {
-    main: [srcPath + 'index']
+    main: ['babel-polyfill', srcPath + 'index']
   },
   output: {
     path: distPath,

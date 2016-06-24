@@ -20,6 +20,7 @@ const webpackConfig = {
   // devtool: 'source-map',
   entry: {
     main: [
+      'babel-polyfill',
       'webpack-dev-server/client?' + host,
       'webpack/hot/only-dev-server',
       srcPath + 'index'
