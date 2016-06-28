@@ -69,7 +69,7 @@
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
-    "redux-act-reducer": "^1.3.0",
+    "redux-act-reducer": "^1.4.1",
     "redux-thunk": "^2.1.0"
   }
 }

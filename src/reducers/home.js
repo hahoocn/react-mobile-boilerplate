@@ -36,24 +36,7 @@ const home = createReducer({
   },
   [SHOW_MOVIES_ASYNC](state, action) {
     return {
-      'REQUEST'() {
-        return {
-          isMoviesFetching: true
-        };
-      },
-      'SUCCESS'() {
-        return {
-          isMoviesFetching: false,
-          getMoviesErr: undefined,
-          moviesTotal: action.res.body.total
-        };
-      },
-      'FAILURE'() {
-        return {
-          isMoviesFetching: false,
-          getMoviesErr: action.err
-        };
-      }
+      moviesTotal: action.res.body.total
     };
   },
   [SHOW_HELLO](state, action) {
