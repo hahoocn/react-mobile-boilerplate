@@ -1,5 +1,5 @@
 import { createReducer } from 'redux-act-reducer';
-import { SHOW_HELLO, SHOW_HELLO_ASYNC } from '../actions/home';
+import { SHOW_HELLO, SHOW_HELLO_ASYNC, SHOW_MOVIES_ASYNC } from '../actions/home';
 
 const defaultState = {
   isFetching: false,
@@ -32,6 +32,11 @@ const home = createReducer({
           err: action.err
         };
       }
+    };
+  },
+  [SHOW_MOVIES_ASYNC](state, action) {
+    return {
+      moviesTotal: action.res.body.total
     };
   },
   [SHOW_HELLO](state, action) {

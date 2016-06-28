@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showHello, showHelloAsync } from '../actions/home';
+import { showHello, showHelloAsync, showMoviesAsync } from '../actions/home';
 
 class Home extends React.Component {
   static propTypes = {
@@ -20,6 +20,7 @@ class Home extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(showHelloAsync('Async!'));
+    dispatch(showMoviesAsync());
   }
 
   shouldComponentUpdate(nextProps) {
@@ -33,6 +34,7 @@ class Home extends React.Component {
         <h1>{this.state.info}</h1>
         <h2>{home.info}</h2>
         <h2>{home.infoAsync} {home.name}</h2>
+        <h3>Movies: {home.moviesTotal}</h3>
       </div>
 		);
   }
