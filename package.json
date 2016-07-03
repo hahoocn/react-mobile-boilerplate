@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run dev",
-    "dev": "cross-env NODE_ENV=development && PORT=3000 && node webpack/devServer.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
+    "dev": "cross-env NODE_ENV=development babel-node webpack/webpack.devServer.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --progress",
     "profile": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > profile.json",
     "clean": "rimraf build"
   },
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/hahoocn/react-mobile-boilerplate#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.10.1",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
@@ -58,11 +59,14 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.9.1",
-    "hahoorequest": "^0.1.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "hahoorequest": "^0.5.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",

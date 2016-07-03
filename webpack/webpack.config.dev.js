@@ -17,12 +17,11 @@ const port = process.env.PORT || 3000;
 const host = 'http://' + hostname + ':' + port;
 
 const webpackConfig = {
-  // devtool: 'source-map',
+  devtool: 'inline-source-map',
   entry: {
     main: [
       'babel-polyfill',
-      'webpack-dev-server/client?' + host,
-      'webpack/hot/only-dev-server',
+      'webpack-hot-middleware/client?path=' + host + '/__webpack_hmr',
       srcPath + 'index'
     ]
   },
@@ -72,9 +71,9 @@ const webpackConfig = {
     new ExtractTextPlugin('css/[name].css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      __SERVER__: false,
-      __DEV__: true,
-      __DEVTOOLS__: true
+      'process.env':{
+        'NODE_ENV': JSON.stringify('development')
+      }
     })
   ],
   resolve: {
