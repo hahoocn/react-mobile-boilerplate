@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 const postcssNested = require('postcss-nested');
@@ -8,10 +7,12 @@ const postcssMixins = require('postcss-mixins');
 const postcssSimpleVars = require('postcss-simple-vars');
 const CleanPlugin = require('clean-webpack-plugin');
 
-const config = require('../src/config');
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.join(rootPath, '/src/');
-const distPath = path.join(rootPath, '/build/');
+const distPath = path.join(rootPath, '/public/');
+
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack.isomorphic.tools'));
 
 const webpackConfig = {
   devtool: false,
@@ -21,16 +22,20 @@ const webpackConfig = {
   },
   output: {
     path: distPath,
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
+    publicPath: '/'
   },
   module: {
     loaders: [
       { test: /\.(jsx|js)$/, include: srcPath, loaders: ['babel']},
       { test: /\.json$/, include: srcPath, loader: 'json' },
       { test: /\.css$/, include: srcPath, loader: ExtractTextPlugin.extract('style', 'css?modules&minimize&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss') },
-      { test: /\.(jpe?g|png|gif|svg)$/, include: srcPath, loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{progressive:true, optimizationLevel: 7, svgo:{removeTitle:true,removeViewBox:false,removeRasterImages:true,sortAttrs:true,removeAttrs:false}}' },
-      { test: /\.(woff2?|otf|eot|ttf)$/i, include: srcPath, loader: 'url?name=fonts/[name].[ext]' },
-      { test: /\.hbs$/, loader: "handlebars" }
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        include: srcPath,
+        loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{progressive:true, optimizationLevel: 7, svgo:{removeTitle:true,removeViewBox:false,removeRasterImages:true,sortAttrs:true,removeAttrs:false}}'
+      },
+      { test: /\.(woff2?|otf|eot|ttf)$/i, include: srcPath, loader: 'url?name=fonts/[name].[ext]' }
     ],
   },
   postcss: function () {
@@ -39,13 +44,6 @@ const webpackConfig = {
   plugins: [
     new CleanPlugin([distPath], {
       root: rootPath
-    }),
-    new HtmlWebpackPlugin({
-      title: config.app.title,
-      isWebpack: true,
-      hash: true,
-      template: srcPath + 'template/index.hbs',
-      filename: distPath + 'index.html'
     }),
     new ExtractTextPlugin('css/[name].css'),
     new webpack.DefinePlugin({
@@ -63,8 +61,10 @@ const webpackConfig = {
         drop_debugger: true,
         drop_console: true
       }
-    })
+    }),
+    webpackIsomorphicToolsPlugin
   ],
+  progress: true,
   resolve: {
     extensions: ['', '.js', '.jsx'],
   }

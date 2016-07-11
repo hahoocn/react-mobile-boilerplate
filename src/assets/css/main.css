@@ -1,0 +1,27 @@
+$defaultFontColor: #3b3b3b;
+
+html {
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: $defaultFontColor;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $defaultFontColor;
+  text-decoration: none;
+  outline: none;
+}
+
+a img {
+  border: 0;
+}

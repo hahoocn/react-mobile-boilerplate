@@ -5,11 +5,10 @@ class App extends React.Component {
     children: React.PropTypes.element,
   };
 
-  state = {
-    info: 'for test' // test
-  }
+  state = {}
 
   render() {
+    require('../../assets/css/main.css');
     return (
       <div>
         {this.props.children}

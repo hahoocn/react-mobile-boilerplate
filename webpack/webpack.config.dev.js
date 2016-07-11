@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssNested = require('postcss-nested');
 const postcssMixins = require('postcss-mixins');
@@ -12,29 +11,34 @@ const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.join(rootPath, '/src/');
 const distPath = path.join(rootPath, '/dist/');
 
-const hostname = process.env.HOSTNAME || 'localhost';
-const port = process.env.PORT || 3000;
-const host = 'http://' + hostname + ':' + port;
+const hostname = config.host || 'localhost';
+const port = config.hotLoadPort;
+const host = 'http://' + hostname + ':' + port + '/';
+
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack.isomorphic.tools'));
 
 const webpackConfig = {
   devtool: 'inline-source-map',
+  context: path.resolve(__dirname, '..'),
   entry: {
     main: [
       'babel-polyfill',
-      'webpack-hot-middleware/client?path=' + host + '/__webpack_hmr',
+      'webpack-hot-middleware/client?path=' + host + '__webpack_hmr',
       srcPath + 'index'
     ]
   },
   output: {
     path: distPath,
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: host
   },
   module: {
     loaders: [
       {
         test: /\.(jsx|js)$/,
         include: srcPath,
+        exclude: /node_modules/,
         loaders: ['react-hot', 'babel', 'eslint']
       },
       {
@@ -45,17 +49,21 @@ const webpackConfig = {
       {
         test: /\.css$/,
         include: srcPath,
-        loader: ExtractTextPlugin.extract(
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
-        )
+        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/,
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
         include: srcPath,
         loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{progressive:true, optimizationLevel: 7, svgo:{removeTitle:true,removeViewBox:false,removeRasterImages:true,sortAttrs:true,removeAttrs:false}}'
       },
-      { test: /\.(woff2?|otf|eot|ttf)$/i, include: srcPath, loader: 'url?name=fonts/[name].[ext]' }
+      {
+        test: /\.(woff2?|otf|eot|ttf)$/i,
+        include: srcPath,
+        loader: 'url?name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.hbs$/, loader: "handlebars"
+      }
     ],
   },
   postcss: function () {
@@ -63,19 +71,21 @@ const webpackConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: config.appTitle,
-      hash: false,
-      template: srcPath + 'template/index.html',
+      title: config.app.title,
+      isWebpack: true,
+      hash: true,
+      template: srcPath + 'template/index.hbs',
       filename: distPath + 'index.html'
     }),
-    new ExtractTextPlugin('css/[name].css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env':{
         'NODE_ENV': JSON.stringify('development')
       }
-    })
+    }),
+    webpackIsomorphicToolsPlugin.development()
   ],
+  progress: true,
   resolve: {
     extensions: ['', '.js', '.jsx'],
   }

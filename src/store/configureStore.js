@@ -5,17 +5,23 @@ import rootReducer from '../reducers';
 export default function configureStore(initialState) {
   const middleware = compose(
     applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+
+    process.env.NODE_ENV === 'development' &&
+    typeof window === 'object' &&
+    typeof window.devToolsExtension !== 'undefined'
+      ? window.devToolsExtension()
+      : f => f
   );
 
   const store = createStore(rootReducer, initialState, middleware);
 
- /* eslint global-require: 0 */
-  if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers').default;
-      store.replaceReducer(nextReducer);
-    });
+  if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+      module.hot.accept('../reducers', () => {
+        const nextReducer = require('../reducers').default;
+        store.replaceReducer(nextReducer);
+      });
+    }
   }
 
   return store;

@@ -6,8 +6,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 const compiler = webpack(webpackConfig);
-const host = config.host || 'localhost';
-const port = config.port || 3000;
+const host = config.host;
+const port = config.hotLoadPort;
 const serverOptions = {
   contentBase: 'http://' + host + ':' + port,
   quiet: true,
