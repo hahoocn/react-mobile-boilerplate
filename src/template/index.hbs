@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  {{#if htmlWebpackPlugin.options.isWebpack}}
+  <title>{{htmlWebpackPlugin.options.title}}</title>
+  {{else}}
+  {{{title}}}
+  {{{meta}}}
+  {{{link}}}
+  {{{script}}}
+  {{#each assets.styles}}
+    <link href="{{this}}" rel="stylesheet">
+  {{/each}}
+  {{/if}}
+</head>
+<body>
+  {{#if htmlWebpackPlugin.options.isWebpack}}
+  <div id="container"></div>
+  {{else}}
+  <div id="container">{{{body}}}</div>
+  <script>window.__INITIAL_STATE__ = {{{state}}}</script>
+  <script type="text/javascript" src="{{{assets.javascript.main}}}"></script>
+  {{/if}}
+</body>
+</html>

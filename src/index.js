@@ -6,10 +6,11 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import routes from './routes';
 
-const store = configureStore();
+/* eslint no-underscore-dangle: 0 */
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore(initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
-/* global document */
 const rootEl = document.getElementById('container');
 
 ReactDOM.render(

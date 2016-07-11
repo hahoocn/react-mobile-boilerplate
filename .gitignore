@@ -13,6 +13,7 @@ stats.json
 *.iml
 .vscode
 dist
+public
 
 webpack-assets.json
 webpack-stats.json
