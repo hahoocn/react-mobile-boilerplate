@@ -2,8 +2,8 @@ import express from 'express';
 import webpack from 'webpack';
 import config from '../src/config';
 import webpackConfig from './webpack.config.dev';
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
 const compiler = webpack(webpackConfig);
 const host = config.host;
