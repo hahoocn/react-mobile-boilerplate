@@ -23,6 +23,7 @@
         "no-console": 0,
         "no-alert": 0,
         "global-require": 0,
+        "react/wrap-multilines": 0,
     },
     "globals": {
       "window": true
