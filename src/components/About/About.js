@@ -4,14 +4,7 @@ import Helmet from 'react-helmet';
 import config from '../../config';
 
 class About extends React.Component {
-  static propTypes = {
-    dispatch: React.PropTypes.func,
-    home: React.PropTypes.object,
-  };
-
-  state = {
-    info: 'About'
-  }
+  state = {}
 
   render() {
     const homeStyles = require('../../containers/Home/Home.css');
@@ -21,7 +14,7 @@ class About extends React.Component {
       <div className={homeStyles.main}>
         <Helmet title={pageTitle} />
         <div className={homeStyles.logo}><img src={logoImg} alt="" /></div>
-        <h1>{this.state.info}</h1>
+        <h1>About</h1>
         <h3 className={styles.content}>
           A simple boilerplate for build mobile web app ( Node.js, React.js,
           Redux, Webpack, CSS Modules, PostCSS, Babel, ES2015, ESLint,

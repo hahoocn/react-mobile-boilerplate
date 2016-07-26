@@ -27,15 +27,37 @@ const webpackConfig = {
   },
   module: {
     loaders: [
-      { test: /\.(jsx|js)$/, include: srcPath, loaders: ['babel']},
-      { test: /\.json$/, include: srcPath, loader: 'json' },
-      { test: /\.css$/, include: srcPath, loader: ExtractTextPlugin.extract('style', 'css?modules&minimize&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss') },
+      {
+        test: /\.(jsx|js)$/, include: srcPath, loaders: ['babel']
+      },
+      {
+        test: /\.json$/, include: srcPath, loader: 'json'
+      },
+      {
+        test: /\.css$/,
+        include: srcPath,
+        loader: ExtractTextPlugin.extract('style', 'css?modules&minimize&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
+      },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
         include: srcPath,
-        loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{progressive:true, optimizationLevel: 7, svgo:{removeTitle:true,removeViewBox:false,removeRasterImages:true,sortAttrs:true,removeAttrs:false}}'
+        loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{ progressive:true, optimizationLevel: 7 }'
       },
-      { test: /\.(woff2?|otf|eot|ttf)$/i, include: srcPath, loader: 'url?name=fonts/[name].[ext]' }
+      {
+        test: /\.svg(\?[\s\S]+)?$/,
+        include: srcPath,
+        loader: 'url?limit=8192&name=svg/[name].[ext]&mimetype=image/svg+xml!image-webpack?{ svgo: {plugins: [{ removeUselessDefs: false }, { removeTitle: true }, { removeRasterImages: true }, { sortAttrs: true } ]} }'
+      },
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        include: srcPath,
+        loader: "url?limit=8192&name=fonts/[name].[ext]"
+      },
+      {
+        test: /\.(ttf|eot)(\?[\s\S]+)?$/,
+        include: srcPath,
+        loader: 'file?name=fonts/[name].[ext]'
+      }
     ],
   },
   postcss: function () {

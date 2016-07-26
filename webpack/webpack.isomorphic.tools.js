@@ -7,8 +7,7 @@ module.exports = {
         'jpeg',
         'jpg',
         'png',
-        'gif',
-        'svg'
+        'gif'
       ],
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
@@ -19,6 +18,10 @@ module.exports = {
         'ttf',
         'eot'
       ],
+      parser: WebpackIsomorphicToolsPlugin.url_loader_parser
+    },
+    svg: {
+      extension: 'svg',
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     style_modules: {
