@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=production babel-node src/server/main.js",
     "start:dev": "cross-env NODE_ENV=development babel-node src/server/main.js",
     "start:hot": "cross-env NODE_ENV=development babel-node webpack/webpack.devServer.js",
-    "dev": "npm run start:hot & npm run start:dev",
+    "dev": "concurrent --kill-others \"npm run start:hot\" \"npm run start:dev\"",
     "build:client": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --progress",
     "build": "cross-env NODE_ENV=production webpack --verbose --colors --display-error-details --progress --config webpack/webpack.config.server.js",
     "profile": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > profile.json",
@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",
+    "concurrently": "^3.1.0",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "hahoorequest": "^0.6.0",
