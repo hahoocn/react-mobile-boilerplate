@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'react-router/lib/Link';
+import Helmet from 'react-helmet';
 import { showHello, showHelloAsync, showMoviesAsync } from '../../actions/home';
 import logoImg from '../../assets/images/logo.jpg';
-import Helmet from 'react-helmet';
 import config from '../../config';
 
 class Home extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     home: React.PropTypes.object,
-    showHello: React.PropTypes.func,
   };
 
   state = {
@@ -32,6 +31,7 @@ class Home extends React.Component {
 
   render() {
     const styles = require('./Home.css');
+
     const { home } = this.props;
     return (
       <div className={styles.main}>
@@ -44,7 +44,7 @@ class Home extends React.Component {
         <h2>Remote loading: Movies {home.moviesTotal}</h2>
         <h3>{home.name} {home.infoAsync}</h3>
       </div>
-		);
+    );
   }
 }
 

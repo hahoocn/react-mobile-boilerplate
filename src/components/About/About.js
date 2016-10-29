@@ -1,6 +1,6 @@
 import React from 'react';
-import logoImg from '../../assets/images/logo.jpg';
 import Helmet from 'react-helmet';
+import logoImg from '../../assets/images/logo.jpg';
 import config from '../../config';
 
 class About extends React.Component {
@@ -9,6 +9,7 @@ class About extends React.Component {
   render() {
     const homeStyles = require('../../containers/Home/Home.css');
     const styles = require('./About.css');
+
     const pageTitle = `About - ${config.app.title}`;
     return (
       <div className={homeStyles.main}>
@@ -21,7 +22,7 @@ class About extends React.Component {
           EditorConfig ... )
         </h3>
       </div>
-		);
+    );
   }
 }
 

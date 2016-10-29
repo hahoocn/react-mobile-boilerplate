@@ -5,10 +5,10 @@ import React from 'react';
 import { match, RouterContext } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
-import configureStore from '../store/configureStore';
-import routes from '../routes';
 import exphbs from 'express-handlebars';
 import Helmet from 'react-helmet';
+import configureStore from '../store/configureStore';
+import routes from '../routes';
 import config from '../config';
 
 const app = express();
@@ -75,7 +75,7 @@ app.use((req, res) => {
 
       res.render('index', data);
     })
-    .catch((e) => next(e));
+    .catch(e => next(e));
   });
 });
 

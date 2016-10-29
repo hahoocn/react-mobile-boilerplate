@@ -9,11 +9,12 @@ class App extends React.Component {
 
   render() {
     require('../../assets/css/main.css');
+
     return (
       <div>
         {this.props.children}
       </div>
-		);
+    );
   }
 }
 
