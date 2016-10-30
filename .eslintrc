@@ -24,6 +24,9 @@
         "no-alert": 0,
         "global-require": 0,
         "react/wrap-multilines": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/forbid-prop-types": 0,
+        "object-shorthand": [2, "always", { "avoidQuotes": false }],
     },
     "globals": {
       "window": true

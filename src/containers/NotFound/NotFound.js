@@ -5,6 +5,7 @@ import config from '../../config';
 export default function NotFound() {
   const pageTitle = `404 not found - ${config.app.title}`;
   const styles = require('./NotFound.css');
+
   return (
     <div className={styles.notFound}>
       <Helmet title={pageTitle} />
