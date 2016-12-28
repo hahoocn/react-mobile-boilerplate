@@ -10,7 +10,7 @@ class Home extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     home: React.PropTypes.object,
-  };
+  }
 
   state = {
     info: 'Hahoo App!'
