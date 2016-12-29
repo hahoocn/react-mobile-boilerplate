@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "es_modules": {},
+    "webpack": {
+      "configPath": "./webpack/webpack.config.dev.js"
+    }
+  }
+}
