@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { createReducer } from 'redux-act-reducer';
-import { SHOW_HELLO, SHOW_HELLO_ASYNC, SHOW_MOVIES_ASYNC } from '../actions/home';
+import { SHOW_HELLO, SHOW_HELLO_ASYNC, SHOW_MOVIES_ASYNC } from './actions';
 
 const defaultState = fromJS({
   isFetching: false,

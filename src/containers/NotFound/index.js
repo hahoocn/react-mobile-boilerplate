@@ -4,7 +4,7 @@ import config from '../../config';
 
 export default function NotFound() {
   const pageTitle = `404 not found - ${config.app.title}`;
-  const styles = require('./NotFound.css');
+  const styles = require('./styles.css');
 
   return (
     <div className={styles.notFound}>

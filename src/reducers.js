@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import home from './home';
+import home from './containers/Home/reducer';
 
 // Initial routing state
 const routeInitialState = fromJS({ locationBeforeTransitions: null });

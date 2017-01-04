@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'react-router/lib/Link';
 import Helmet from 'react-helmet';
-import { showHello, showHelloAsync, showMoviesAsync } from '../../actions/home';
+import { showHello, showHelloAsync, showMoviesAsync } from './actions';
 import logoImg from '../../assets/images/logo.jpg';
 import config from '../../config';
 
@@ -30,7 +30,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const styles = require('./Home.css');
+    const styles = require('./styles.css');
 
     const { home } = this.props;
     return (
