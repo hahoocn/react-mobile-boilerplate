@@ -1,6 +1,6 @@
 {
   "name": "react-mobile-boilerplate",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A react boilerplate for mobile webapp",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "build": "cross-env NODE_ENV=production webpack --verbose --colors --display-error-details --progress --config webpack/webpack.config.server.js",
     "profile": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > profile.json",
     "clean": "rimraf build && rimraf public",
-    "lint": "eslint ."
+    "eslint": "eslint src"
   },
   "repository": {
     "type": "git",
