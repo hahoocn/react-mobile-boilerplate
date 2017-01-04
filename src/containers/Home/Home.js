@@ -59,7 +59,7 @@ Home.fetchData = ({ store }) => {
 
 const mapStateToProps = (state) => {
   const select = {
-    home: state.home
+    home: state.get('home').toObject()
   };
   return select;
 };

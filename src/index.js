@@ -9,7 +9,11 @@ import routes from './routes';
 /* eslint no-underscore-dangle: 0 */
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(browserHistory, store, {
+  selectLocationState(state) {
+    return state.get('routing').toJS();
+  }
+});
 
 const rootEl = document.getElementById('container');
 
