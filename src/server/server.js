@@ -7,7 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import exphbs from 'express-handlebars';
 import Helmet from 'react-helmet';
-import configureStore from '../store/configureStore';
+import configureStore from '../store';
 import routes from '../routes';
 import config from '../config';
 
