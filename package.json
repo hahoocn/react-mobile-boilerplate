@@ -74,6 +74,7 @@
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "hahoorequest": "^0.6.0",
+    "immutable": "^3.8.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-helmet": "^3.2.3",
@@ -82,7 +83,9 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-act-reducer": "^1.5.2",
+    "redux-immutable": "^3.0.9",
     "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.4",
     "webpack-isomorphic-tools": "^2.6.5"
   }
 }
