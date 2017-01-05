@@ -23,7 +23,7 @@ const home = createReducer({
       'SUCCESS'() {
         return state.merge({
           isFetching: false,
-          lastUpdated: action.receivedAt,
+          lastUpdated: Date.now(),
           err: undefined,
           ...action.res
         });
