@@ -5,11 +5,13 @@ import Helmet from 'react-helmet';
 import { showHello, showHelloAsync, showMoviesAsync } from './actions';
 import logoImg from '../../assets/images/logo.jpg';
 import config from '../../config';
+import { selectInfo, selectHome } from './selectors';
 
 class Home extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     home: React.PropTypes.object,
+    homeinfo: React.PropTypes.string,
   }
 
   state = {
@@ -18,7 +20,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    if (!this.props.home.info) dispatch(showHello('About'));
+    if (!this.props.homeinfo) dispatch(showHello('About'));
     if (!this.props.home.moviesTotal) dispatch(showMoviesAsync());
     if (!this.props.home.name || !this.props.home.infoAsync) {
       dispatch(showHelloAsync('This is the content of'));
@@ -32,14 +34,14 @@ class Home extends React.Component {
   render() {
     const styles = require('./styles.css');
 
-    const { home } = this.props;
+    const { home, homeinfo } = this.props;
     return (
       <div className={styles.main}>
         <Helmet title={config.app.title} />
         <div className={styles.logo}><img src={logoImg} alt="" /></div>
         <h1>{this.state.info}</h1>
         <h2 className={styles.aboutBox}>
-          <Link to={'/about'} className={styles.about}>{home.info}</Link>
+          <Link to={'/about'} className={styles.about}>{homeinfo}</Link>
         </h2>
         <h2>Remote loading: Movies {home.moviesTotal}</h2>
         <h3>{home.name} {home.infoAsync}</h3>
@@ -57,11 +59,9 @@ Home.fetchData = ({ store }) => {
   return fetch;
 };
 
-const mapStateToProps = (state) => {
-  const select = {
-    home: state.get('home').toObject()
-  };
-  return select;
-};
+const mapStateToProps = state => ({
+  home: selectHome(state).toObject(),
+  homeinfo: selectInfo(state),
+});
 
 export default connect(mapStateToProps)(Home);
