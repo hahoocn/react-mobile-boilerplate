@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+import { fromJS } from 'immutable';
+import rootReducer from './reducers';
 
 export default function configureStore(initialState) {
   const middleware = compose(
@@ -13,12 +14,12 @@ export default function configureStore(initialState) {
       : f => f
   );
 
-  const store = createStore(rootReducer, initialState, middleware);
+  const store = createStore(rootReducer, fromJS(initialState), middleware);
 
   if (process.env.NODE_ENV === 'development') {
     if (module.hot) {
-      module.hot.accept('../reducers', () => {
-        const nextReducer = require('../reducers').default;
+      module.hot.accept('./reducers', () => {
+        const nextReducer = require('./reducers').default;
 
         store.replaceReducer(nextReducer);
       });

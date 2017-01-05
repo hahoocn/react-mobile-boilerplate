@@ -1,3 +1,4 @@
-export App from './App/App';
-export Home from './Home/Home';
-export NotFound from './NotFound/NotFound';
+export App from './App';
+export Home from './Home';
+export About from './About';
+export NotFound from './NotFound';

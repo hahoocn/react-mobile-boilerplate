@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { App, Home, NotFound } from '../containers';
-import { About } from '../components';
+import { App, About, Home, NotFound } from './containers';
 
 export default function Routes() {
   return (
