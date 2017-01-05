@@ -43,6 +43,11 @@ $ npm run clean
   - [Redux Thunk](https://github.com/gaearon/redux-thunk) (Thunk middleware for Redux.)
   - [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension) (A chrome extension for redux)
   - [hahoorequest](https://github.com/hahoocn/hahoorequest) (A HTTP request abstract library, use other http request libraries in one way. Isomorphic request to work in Node or in the browser.)
+  - [reselect](https://github.com/reactjs/reselect) (Simple selector library for Redux)
+  - [redux-immutable](https://github.com/gajus/redux-immutable) (redux-immutable is used to create an equivalent function of Redux combineReducers that works with Immutable.js state.)
+
+#### immutable
+  - [immutable-js](http://facebook.github.io/immutable-js/) (Immutable persistent data collections for Javascript which increase efficiency and simplicity.)
 
 #### Webpack
   - [Webpack](http://webpack.github.io/) (A module bundler.)
@@ -88,6 +93,9 @@ $ npm run clean
 #### ESLint
   - [ESLint](http://eslint.org/) (The pluggable linting utility for JavaScript and JSX.)
   - [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) (This package provides Airbnb's .eslintrc as an extensible shared config. [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react): A mostly reasonable approach to React and JSX)
+
+#### Stylelint
+  - [stylelint](http://stylelint.io/) (A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.)
 
 #### Express
   - [Express](http://expressjs.com/) (Fast, unopinionated, minimalist web framework for node.)
