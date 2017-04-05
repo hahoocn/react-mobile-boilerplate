@@ -20,11 +20,11 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('.
 
 const webpackConfig = {
   devtool: 'inline-source-map',
-  context: path.resolve(__dirname, '..'),
   entry: {
     main: [
       'babel-polyfill',
       'webpack-hot-middleware/client?path=' + host + '__webpack_hmr',
+      'react-hot-loader/patch',
       srcPath + 'index'
     ]
   },
@@ -34,54 +34,154 @@ const webpackConfig = {
     publicPath: host
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|js)$/,
         include: srcPath,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel', 'eslint']
-      },
-      {
-        test: /\.json$/,
-        loader: 'json'
+        use: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.css$/,
-        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [postcssMixins, postcssSimpleVars, postcssNested, autoprefixer]
+            },
+          },
+        ]
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=8192&name=images/[name].[ext]!image-webpack?{ progressive:true, optimizationLevel: 7 }'
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'images/[name].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 4,
+              },
+              pngquant: {
+                quality: '75-90',
+                speed: 3,
+              }
+            }
+          },
+        ]
       },
       {
         test: /\.svg$/,
         include: srcPath,
-        loader: 'url?limit=8192&name=svg/[name].[ext]&mimetype=image/svg+xml!image-webpack?{ svgo: {plugins: [{ removeUselessDefs: false }, { removeTitle: true }, { removeRasterImages: true }, { sortAttrs: true } ]} }'
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'svg/[name].[ext]',
+              mimetype: 'image/svg+xml'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              svgo: {
+                plugins: [
+                  {
+                    removeUselessDefs: false
+                  },
+                  {
+                    removeTitle: true
+                  },
+                  {
+                    removeRasterImages: true
+                  },
+                  {
+                    sortAttrs: true
+                  }
+                ]
+              }
+            }
+          },
+        ]
       },
       {
         test: /\.svg(\?[\s\S]+)?$/,
         exclude: srcPath,
-        loader: 'url?limit=8192&name=fonts/[name].[ext]&mimetype=image/svg+xml'
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'fonts/[name].[ext]',
+              mimetype: 'image/svg+xml'
+            }
+          },
+        ]
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url?limit=8192&name=fonts/[name].[ext]"
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'fonts/[name].[ext]'
+            }
+          },
+        ]
       },
       {
         test: /\.(ttf|eot)(\?[\s\S]+)?$/,
-        loader: 'file?name=fonts/[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[ext]'
+            }
+          },
+        ]
       },
       {
         test: /\.hbs$/,
         include: srcPath,
-        loader: 'handlebars'
+        use: [
+          {
+            loader: 'handlebars-loader',
+          },
+        ]
       }
     ],
   },
-  postcss: function () {
-    return [postcssMixins, postcssSimpleVars, postcssNested, autoprefixer];
-  },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: path.resolve(__dirname, '..')
+      }
+    }),
     new HtmlWebpackPlugin({
       title: config.app.title,
       isWebpack: true,
@@ -97,9 +197,8 @@ const webpackConfig = {
     }),
     webpackIsomorphicToolsPlugin.development()
   ],
-  progress: true,
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   }
 };
 
