@@ -1,17 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Link from 'react-router/lib/Link';
 import Helmet from 'react-helmet';
 import { showHello, showHelloAsync, showMoviesAsync } from './actions';
 import logoImg from '../../assets/images/logo.jpg';
 import config from '../../config';
 import { selectInfo, selectHome } from './selectors';
+import { Tap } from '../../components';
 
 class Home extends React.Component {
   static propTypes = {
-    dispatch: React.PropTypes.func,
-    home: React.PropTypes.object,
+    dispatch: React.PropTypes.func.isRequired,
+    home: React.PropTypes.object.isRequired,
     homeinfo: React.PropTypes.string,
+    history: React.PropTypes.object.isRequired,
+  }
+
+  static defaultProps = {
+    homeinfo: undefined,
   }
 
   state = {
@@ -34,14 +39,16 @@ class Home extends React.Component {
   render() {
     const styles = require('./styles.css');
 
-    const { home, homeinfo } = this.props;
+    const { home, homeinfo, history } = this.props;
     return (
       <div className={styles.main}>
         <Helmet title={config.app.title} />
         <div className={styles.logo}><img src={logoImg} alt="" /></div>
         <h1>{this.state.info}</h1>
         <h2 className={styles.aboutBox}>
-          <Link to={'/about'} className={styles.about}>{homeinfo}</Link>
+          <Tap onTap={() => history.push('/about')} className={styles.about}>
+            {homeinfo}
+          </Tap>
         </h2>
         <h2>Remote loading: Movies {home.moviesTotal}</h2>
         <h3>{home.name} {home.infoAsync}</h3>
