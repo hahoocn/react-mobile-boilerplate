@@ -1,6 +1,6 @@
-import path from 'path';
-import WebpackIsomorphicTools from 'webpack-isomorphic-tools';
-import WebpackIsomorphicToolsConfig from '../../webpack/webpack.isomorphic.tools';
+const path = require('path');
+const WebpackIsomorphicTools = require('webpack-isomorphic-tools');
+const WebpackIsomorphicToolsConfig = require('../../webpack/webpack.isomorphic.tools');
 
 const rootDir = path.resolve(__dirname, '../../');
 /* eslint no-underscore-dangle: 0*/
