@@ -2,13 +2,14 @@ import path from 'path';
 import http from 'http';
 import express from 'express';
 import React from 'react';
-import { match, RouterContext } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import exphbs from 'express-handlebars';
 import Helmet from 'react-helmet';
+import { StaticRouter } from 'react-router-dom';
+import { matchRoutes } from 'react-router-config';
 import configureStore from '../store';
-import routes from '../routes';
+import { routes, renderRoutes } from '../routes';
 import config from '../config';
 
 const app = express();
@@ -30,53 +31,47 @@ app.use((req, res) => {
     webpackIsomorphicTools.refresh();
   }
 
-  match({ routes: routes(), location: req.url }, (err, redirectLocation, renderProps) => {
-    if (err) {
-      res.status(500).end(`Internal Server Error ${err}`);
+  const matchData = matchRoutes(routes, req.url);
+  if (!matchData || matchData.length === 0) {
+    res.status(404).end('Not found');
+    return;
+  }
+  const component = matchData[0].route.component;
+  const fetchData = (component && component.fetchData) || (() => Promise.resolve());
+  const match = matchData[0].match;
+  const store = configureStore({});
+  fetchData({ store, match })
+  .then(() => {
+    const context = {};
+    const body = renderToString(
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          {renderRoutes()}
+        </StaticRouter>
+      </Provider>
+    );
+
+    if (context.url) {
+      res.redirect(302, context.url);
+      return;
     }
 
-    if (redirectLocation) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    }
+    const head = Helmet.rewind();
+    const state = store.getState();
+    const data = {
+      title: head.title.toString(),
+      meta: head.meta.toString(),
+      link: head.link.toString(),
+      script: head.script.toString(),
+      body,
+      state: JSON.stringify(state),
+      assets: webpackIsomorphicTools.assets(),
+      layout: false
+    };
 
-    if (!renderProps) {
-      res.status(404).end('Not found');
-    }
-
-    const components = renderProps.components;
-    const Comp = components[components.length - 1].WrappedComponent;
-    const fetchData = (Comp && Comp.fetchData) || (() => Promise.resolve());
-
-    const store = configureStore();
-    const { location, params, history } = renderProps;
-
-    fetchData({ store, location, params, history })
-    .then(() => {
-      const body = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      );
-
-      const head = Helmet.rewind();
-
-      const state = store.getState();
-
-      const data = {
-        title: head.title.toString(),
-        meta: head.meta.toString(),
-        link: head.link.toString(),
-        script: head.script.toString(),
-        body,
-        state: JSON.stringify(state),
-        assets: webpackIsomorphicTools.assets(),
-        layout: false
-      };
-
-      res.render('index', data);
-    })
-    .catch(e => next(e));
-  });
+    res.render('index', data);
+  })
+  .catch(e => console.log(e));
 });
 
 if (port) {
