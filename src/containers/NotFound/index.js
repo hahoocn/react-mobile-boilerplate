@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import config from '../../config';
 
-export default function NotFound() {
+const NotFound = () => {
   const pageTitle = `404 not found - ${config.app.title}`;
   const styles = require('./styles.css');
 
@@ -13,4 +13,6 @@ export default function NotFound() {
       <p>This is not the web page you are looking for.</p>
     </div>
   );
-}
+};
+
+export default NotFound;

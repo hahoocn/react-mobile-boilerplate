@@ -27,6 +27,8 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/forbid-prop-types": 0,
         "object-shorthand": [2, "always", { "avoidQuotes": false }],
+        "import/no-extraneous-dependencies": 0,
+        "react/no-array-index-key": 0
     },
     "globals": {
       "window": true

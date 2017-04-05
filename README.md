@@ -1,6 +1,8 @@
 # react-mobile-boilerplate
 A simple boilerplate for build mobile web app. Server side and client side rendering support.
 
+> webpack2, react-hot-loader3, react-router4
+
 ## Installation
 You'll need to have [Node.js](https://nodejs.org) to get started.
 ````
