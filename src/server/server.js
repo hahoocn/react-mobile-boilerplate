@@ -6,7 +6,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import exphbs from 'express-handlebars';
 import Helmet from 'react-helmet';
-import { StaticRouter } from 'react-router-dom';
+import StaticRouter from 'react-router-dom/StaticRouter';
 import { matchRoutes } from 'react-router-config';
 import configureStore from '../store';
 import { routes, renderRoutes } from '../routes';
@@ -36,9 +36,9 @@ app.use((req, res) => {
     res.status(404).end('Not found');
     return;
   }
-  const component = matchData[0].route.component;
+  const component = matchData[matchData.length - 1].route.component;
   const fetchData = (component && component.fetchData) || (() => Promise.resolve());
-  const match = matchData[0].match;
+  const match = matchData[matchData.length - 1].match;
   const store = configureStore({});
   fetchData({ store, match })
   .then(() => {
@@ -46,7 +46,7 @@ app.use((req, res) => {
     const body = renderToString(
       <Provider store={store}>
         <StaticRouter location={req.url} context={context}>
-          {renderRoutes()}
+          {renderRoutes(routes)}
         </StaticRouter>
       </Provider>
     );
