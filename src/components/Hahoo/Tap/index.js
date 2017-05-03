@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tappable from 'react-tappable/lib/Tappable';
 
 const Tap = ({ children, ...rest }) => <Tappable {...rest}>{children}</Tappable>;
 
 Tap.propTypes = {
-  children: React.PropTypes.node
+  children: PropTypes.node
 };
 
 Tap.defaultProps = {

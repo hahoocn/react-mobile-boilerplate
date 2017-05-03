@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { renderRoutes } from '../../routes';
 
 const App = ({ route }) => {
@@ -11,7 +12,7 @@ const App = ({ route }) => {
 };
 
 App.propTypes = {
-  route: React.PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired,
 };
 
 export default App;

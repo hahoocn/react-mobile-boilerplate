@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { showHello, showHelloAsync, showMoviesAsync } from './actions';
@@ -9,10 +10,10 @@ import { Tap } from '../../components';
 
 class Home extends React.Component {
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
-    home: React.PropTypes.object.isRequired,
-    homeinfo: React.PropTypes.string,
-    history: React.PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    home: PropTypes.object.isRequired,
+    homeinfo: PropTypes.string,
+    history: PropTypes.object.isRequired,
   }
 
   static defaultProps = {
