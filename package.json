@@ -1,6 +1,6 @@
 {
   "name": "react-mobile-boilerplate",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A react boilerplate for mobile webapp",
   "main": "index.js",
   "scripts": {
