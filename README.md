@@ -62,7 +62,7 @@ $ npm run clean
     - [style-loader](https://github.com/webpack/style-loader) (Add exports of a module as style to DOM)
     - [css-loader](https://github.com/webpack/css-loader) (Loads css file with resolved imports and returns css code) Can minimizes the css with [cssnano](http://cssnano.co/)
     - [eslint-loader](https://github.com/MoOx/eslint-loader) (eslint loader for webpack)
-    - [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader) (Minify PNG, JPEG, GIF and SVG images with imagemin)
+    - [svgo-loader](https://github.com/rpominov/svgo-loader) (optimizing SVG vector graphics files)
     -  [postcss-loader](https://github.com/postcss/postcss-loader) (PostCSS loader for webpack to postprocesses your CSS with PostCSS plugins.)
     - [babel-loader](https://github.com/babel/babel-loader) (Transpiling JavaScript files using Babel and webpack.)
     - [handlebars-loader](https://github.com/pcardune/handlebars-loader) (A handlebars template loader for webpack.)
