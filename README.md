@@ -54,8 +54,7 @@ $ npm run clean
 #### Webpack
   - [Webpack](http://webpack.github.io/) (A module bundler.)
   - Webpack Loaders
-    - [Webpack Dev Middleware](https://github.com/webpack/webpack-dev-middleware) (Offers a dev middleware for webpack, which arguments a live bundle to a directory)
-    - [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware) (Webpack hot reloading you can attach to your own server)
+    - [webpack-dev-server](https://github.com/webpack/webpack-dev-server) (Serves a webpack app. Updates the browser on changes.)
     - [React Hot Loader](http://gaearon.github.io/react-hot-loader/) (Tweak React components in real time.)
     - [url-loader](https://github.com/webpack/url-loader) (Can return a Data Url if the file is smaller than a limit.)
     - [json-loader](https://github.com/webpack/json-loader) (Loads file as JSON)
