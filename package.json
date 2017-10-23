@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production babel-node src/server/main.js",
     "start:dev": "cross-env NODE_ENV=development babel-node src/server/main.js",
-    "start:hot": "cross-env NODE_ENV=development babel-node webpack/webpack.devServer.js",
+    "start:hot": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js",
     "dev": "concurrently --kill-others \"npm run start:hot\" \"npm run start:dev\"",
     "build:client": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --progress",
     "build": "cross-env NODE_ENV=production webpack --verbose --colors --display-error-details --progress --config webpack/webpack.config.server.js",
@@ -66,8 +66,7 @@
     "uglifyjs-webpack-plugin": "^0.4.3",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
-    "webpack-dev-middleware": "^1.10.2",
-    "webpack-hot-middleware": "^2.18.0"
+    "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",

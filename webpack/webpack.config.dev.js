@@ -23,8 +23,9 @@ const webpackConfig = {
   entry: {
     main: [
       'babel-polyfill',
-      'webpack-hot-middleware/client?path=' + host + '__webpack_hmr',
       'react-hot-loader/patch',
+      'webpack-dev-server/client?' + host ,
+      'webpack/hot/only-dev-server',
       srcPath + 'index'
     ]
   },
@@ -169,6 +170,8 @@ const webpackConfig = {
       filename: distPath + 'index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env':{
         'NODE_ENV': JSON.stringify('development')
@@ -176,6 +179,21 @@ const webpackConfig = {
     }),
     webpackIsomorphicToolsPlugin.development()
   ],
+  devServer: {
+    host: hostname,
+    port,
+    historyApiFallback: true,
+    hot: true,
+    compress: true,
+    contentBase: distPath,
+    headers: { 'Access-Control-Allow-Origin': '*'  },
+    publicPath: host,
+    quiet: false,
+    noInfo: false,
+    stats: { colors: true  },
+    index: 'index.html',
+
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
   }
