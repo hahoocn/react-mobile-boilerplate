@@ -41,37 +41,37 @@ app.use((req, res) => {
   const match = matchData[matchData.length - 1].match;
   const store = configureStore({});
   fetchData({ store, match })
-  .then(() => {
-    const context = {};
-    const body = renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
-          {renderRoutes(routes)}
-        </StaticRouter>
-      </Provider>
-    );
+    .then(() => {
+      const context = {};
+      const body = renderToString(
+        <Provider store={store}>
+          <StaticRouter location={req.url} context={context}>
+            {renderRoutes(routes)}
+          </StaticRouter>
+        </Provider>
+      );
 
-    if (context.url) {
-      res.redirect(302, context.url);
-      return;
-    }
+      if (context.url) {
+        res.redirect(302, context.url);
+        return;
+      }
 
-    const head = Helmet.rewind();
-    const state = store.getState();
-    const data = {
-      title: head.title.toString(),
-      meta: head.meta.toString(),
-      link: head.link.toString(),
-      script: head.script.toString(),
-      body,
-      state: JSON.stringify(state),
-      assets: webpackIsomorphicTools.assets(),
-      layout: false
-    };
+      const head = Helmet.rewind();
+      const state = store.getState();
+      const data = {
+        title: head.title.toString(),
+        meta: head.meta.toString(),
+        link: head.link.toString(),
+        script: head.script.toString(),
+        body,
+        state: JSON.stringify(state),
+        assets: webpackIsomorphicTools.assets(),
+        layout: false
+      };
 
-    res.render('index', data);
-  })
-  .catch(e => console.log(e));
+      res.render('index', data);
+    })
+    .catch(e => console.log(e));
 });
 
 if (port) {
