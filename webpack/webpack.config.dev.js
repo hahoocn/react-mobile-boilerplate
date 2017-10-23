@@ -24,7 +24,7 @@ const webpackConfig = {
     main: [
       'babel-polyfill',
       'react-hot-loader/patch',
-      'webpack-dev-server/client?' + host ,
+      'webpack-dev-server/client?' + host,
       'webpack/hot/only-dev-server',
       srcPath + 'index'
     ]
@@ -173,8 +173,8 @@ const webpackConfig = {
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify('development')
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
       }
     }),
     webpackIsomorphicToolsPlugin.development()
@@ -186,11 +186,11 @@ const webpackConfig = {
     hot: true,
     compress: true,
     contentBase: distPath,
-    headers: { 'Access-Control-Allow-Origin': '*'  },
+    headers: { 'Access-Control-Allow-Origin': '*' },
     publicPath: host,
     quiet: false,
     noInfo: false,
-    stats: { colors: true  },
+    stats: { colors: true },
     index: 'index.html',
 
   },

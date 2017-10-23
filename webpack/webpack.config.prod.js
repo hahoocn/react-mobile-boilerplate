@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssNested = require('postcss-nested');
 const postcssMixins = require('postcss-mixins');
@@ -10,6 +10,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = require('../src/config');
+
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.join(rootPath, '/src/');
 const distPath = path.join(rootPath, '/build/');
@@ -167,8 +168,8 @@ const webpackConfig = {
       ignoreOrder: true
     }),
     new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify('production')
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new UglifyJsPlugin()
@@ -176,6 +177,6 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
   }
-}
+};
 
 module.exports = webpackConfig;

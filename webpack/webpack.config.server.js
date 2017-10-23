@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssNested = require('postcss-nested');
 const postcssMixins = require('postcss-mixins');
@@ -153,8 +153,8 @@ const webpackConfig = {
       ignoreOrder: true
     }),
     new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify('production')
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new UglifyJsPlugin(),
@@ -163,6 +163,6 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
   }
-}
+};
 
 module.exports = webpackConfig;
