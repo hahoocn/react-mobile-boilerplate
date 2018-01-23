@@ -13,4 +13,6 @@
 
 .about {
   color: blue;
+  cursor: pointer;
+  outline: none;
 }

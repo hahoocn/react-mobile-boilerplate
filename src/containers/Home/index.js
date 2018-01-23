@@ -6,7 +6,6 @@ import { showHello, showHelloAsync, showMoviesAsync } from './actions';
 import logoImg from '../../assets/images/logo.jpg';
 import config from '../../config';
 import { selectInfo, selectHome } from './selectors';
-import { Tap } from '../../components';
 
 class Home extends React.Component {
   static propTypes = {
@@ -47,11 +46,11 @@ class Home extends React.Component {
         <div className={styles.logo}><img src={logoImg} alt="" /></div>
         <h1>{this.state.info}</h1>
         <h2 className={styles.aboutBox}>
-          <Tap onTap={() => history.push('/about')} className={styles.about}>
+          <span onClick={() => history.push('/about')} role="link" tabIndex="0" className={styles.about}>
             {homeinfo}
-          </Tap>
+          </span>
         </h2>
-        <h2>Remote loading: Movies {home.moviesTotal}</h2>
+        <h2>Loading remote: movies {home.moviesTotal}</h2>
         <h3>{home.name} {home.infoAsync}</h3>
       </div>
     );
