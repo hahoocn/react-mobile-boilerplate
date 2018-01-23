@@ -7,18 +7,9 @@ export const routes = [
   {
     component: App,
     routes: [
-      {
-        path: '/',
-        exact: true,
-        component: Home
-      },
-      {
-        path: '/about',
-        component: About
-      },
-      {
-        component: NotFound
-      }
+      { path: '/', exact: true, component: Home },
+      { path: '/about', component: About },
+      { component: NotFound }
     ]
   }
 ];
