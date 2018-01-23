@@ -12,7 +12,7 @@ const showHelloApi = (name) => {
 };
 
 const showMoviesApi = () => request({
-  url: 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json',
+  url: 'https://raw.githubusercontent.com/ihahoo/doc/master/MoviesExample.json',
   crossOrigin: true
 });
 
