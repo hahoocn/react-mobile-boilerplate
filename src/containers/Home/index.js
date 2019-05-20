@@ -32,10 +32,6 @@ class Home extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.home !== nextProps.home;
-  }
-
   render() {
     const styles = require('./styles.css');
 

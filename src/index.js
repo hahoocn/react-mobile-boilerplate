@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import configureStore from './store';
 import Root from './containers/Root';
 
 /* eslint no-underscore-dangle: 0 */
 const initialState = window.__INITIAL_STATE__;
-const history = createHistory();
+const history = createBrowserHistory();
 const store = configureStore(initialState, history);
 
 ReactDOM.render(

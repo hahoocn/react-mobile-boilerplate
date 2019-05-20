@@ -22,10 +22,7 @@ const webpackConfig = {
   devtool: 'inline-source-map',
   entry: {
     main: [
-      'babel-polyfill',
-      'react-hot-loader/patch',
-      'webpack-dev-server/client?' + host,
-      'webpack/hot/only-dev-server',
+      '@babel/polyfill',
       srcPath + 'index'
     ]
   },
@@ -40,7 +37,7 @@ const webpackConfig = {
         test: /\.(jsx|js)$/,
         include: srcPath,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader']
       },
       {
         test: /\.css$/,
@@ -65,7 +62,7 @@ const webpackConfig = {
         ]
       },
       {
-        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        test: webpackIsomorphicToolsPlugin.regularExpression('images'),
         use: [
           {
             loader: 'url-loader',
@@ -169,7 +166,6 @@ const webpackConfig = {
       template: srcPath + 'template/index.hbs',
       filename: distPath + 'index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
@@ -192,11 +188,14 @@ const webpackConfig = {
     noInfo: false,
     stats: { colors: true },
     index: 'index.html',
-
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-  }
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
+  },
+  mode: 'development'
 };
 
 module.exports = webpackConfig;

@@ -6,7 +6,6 @@ const postcssNested = require('postcss-nested');
 const postcssMixins = require('postcss-mixins');
 const postcssSimpleVars = require('postcss-simple-vars');
 const CleanPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.join(rootPath, '/src/');
@@ -18,7 +17,7 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('.
 const webpackConfig = {
   devtool: false,
   entry: {
-    main: ['babel-polyfill', srcPath + 'index']
+    main: ['@babel/polyfill', srcPath + 'index']
   },
   output: {
     path: distPath,
@@ -26,7 +25,7 @@ const webpackConfig = {
     publicPath: '/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|js)$/,
         include: srcPath,
@@ -56,7 +55,7 @@ const webpackConfig = {
         })
       },
       {
-        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        test: webpackIsomorphicToolsPlugin.regularExpression('images'),
         use: [
           {
             loader: 'url-loader',
@@ -144,8 +143,8 @@ const webpackConfig = {
         context: path.resolve(__dirname, '..')
       }
     }),
-    new CleanPlugin([distPath], {
-      root: rootPath
+    new CleanPlugin({
+      cleanOnceBeforeBuildPatterns: [distPath]
     }),
     new ExtractTextPlugin({
       filename: 'css/[chunkhash].[name].css',
@@ -157,12 +156,12 @@ const webpackConfig = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new UglifyJsPlugin(),
     webpackIsomorphicToolsPlugin
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-  }
+  },
+  mode: 'production'
 };
 
 module.exports = webpackConfig;

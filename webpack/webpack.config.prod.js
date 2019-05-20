@@ -7,7 +7,6 @@ const postcssNested = require('postcss-nested');
 const postcssMixins = require('postcss-mixins');
 const postcssSimpleVars = require('postcss-simple-vars');
 const CleanPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = require('../src/config');
 
@@ -18,14 +17,14 @@ const distPath = path.join(rootPath, '/build/');
 const webpackConfig = {
   devtool: false,
   entry: {
-    main: ['babel-polyfill', srcPath + 'index']
+    main: ['@babel/polyfill', srcPath + 'index']
   },
   output: {
     path: distPath,
     filename: 'js/[chunkhash].[name].js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|js)$/,
         include: srcPath,
@@ -152,8 +151,8 @@ const webpackConfig = {
         context: path.resolve(__dirname, '..')
       }
     }),
-    new CleanPlugin([distPath], {
-      root: rootPath
+    new CleanPlugin({
+      cleanOnceBeforeBuildPatterns: [distPath]
     }),
     new HtmlWebpackPlugin({
       title: config.app.title,
@@ -171,12 +170,12 @@ const webpackConfig = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-    new UglifyJsPlugin()
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-  }
+  },
+  mode: 'production'
 };
 
 module.exports = webpackConfig;

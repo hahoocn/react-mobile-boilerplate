@@ -8,6 +8,7 @@ import exphbs from 'express-handlebars';
 import Helmet from 'react-helmet';
 import StaticRouter from 'react-router-dom/StaticRouter';
 import { matchRoutes } from 'react-router-config';
+import { createMemoryHistory } from 'history';
 import configureStore from '../store';
 import { routes, renderRoutes } from '../routes';
 import config from '../config';
@@ -39,7 +40,12 @@ app.use((req, res) => {
   const component = matchData[matchData.length - 1].route.component;
   const fetchData = (component && component.fetchData) || (() => Promise.resolve());
   const match = matchData[matchData.length - 1].match;
-  const store = configureStore({});
+
+  const history = createMemoryHistory({
+    initialEntries: [req.url]
+  });
+
+  const store = configureStore({}, history);
   fetchData({ store, match })
     .then(() => {
       const context = {};
