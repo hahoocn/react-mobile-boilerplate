@@ -1,7 +1,7 @@
 # react-mobile-boilerplate
 A simple boilerplate for build mobile web app. Server side and client side rendering support.
 
-> webpack3, react-hot-loader3, react-router4
+> webpack4, react-hot-loader4, react-router5
 
 ## Installation
 You'll need to have [Node.js](https://nodejs.org) to get started.
@@ -35,7 +35,7 @@ $ npm run clean
 #### React
   - [React](https://facebook.github.io/react/) (A JavaScript library for creating user interfaces by Facebook and Instagram. )
   - [React Router](https://github.com/reactjs/react-router) (Complete routing library for React.)
-  - [React Router Redux](https://github.com/reactjs/react-router-redux) (Helps you keep that bit of state in sync with your Redux store)
+  - [Connected React Router](https://github.com/supasate/connected-react-router) (A Redux binding for React Router v4 and v5)
   - [React Redux](https://github.com/reactjs/react-redux) (Official React bindings for Redux.)
   - [React Helmet](https://github.com/nfl/react-helmet) (A document head manager for Reac)
 
@@ -59,7 +59,7 @@ $ npm run clean
     - [url-loader](https://github.com/webpack/url-loader) (Can return a Data Url if the file is smaller than a limit.)
     - [json-loader](https://github.com/webpack/json-loader) (Loads file as JSON)
     - [style-loader](https://github.com/webpack/style-loader) (Add exports of a module as style to DOM)
-    - [css-loader](https://github.com/webpack/css-loader) (Loads css file with resolved imports and returns css code) Can minimizes the css with [cssnano](http://cssnano.co/)
+    - [css-loader](https://github.com/webpack/css-loader) (Loads css file with resolved imports and returns css code)
     - [eslint-loader](https://github.com/MoOx/eslint-loader) (eslint loader for webpack)
     - [svgo-loader](https://github.com/rpominov/svgo-loader) (optimizing SVG vector graphics files)
     -  [postcss-loader](https://github.com/postcss/postcss-loader) (PostCSS loader for webpack to postprocesses your CSS with PostCSS plugins.)
@@ -79,13 +79,12 @@ $ npm run clean
     - [PostCSS Nested](https://github.com/postcss/postcss-nested) (PostCSS plugin to unwrap nested rules like how Sass does it.)
     - [PostCSS Mixins](https://github.com/postcss/postcss-mixins) (PostCSS plugin for mixins.)
     - [PostCSS Simple Variables](https://github.com/postcss/postcss-simple-vars) (PostCSS plugin for Sass-like variables.)
-    - [cssnano](http://cssnano.co/) (cssnano takes your nicely formatted CSS and runs it through many focused optimisations, to ensure that the final result is as small as possible for a production environment. ) cssnano is bundled with css-loader
+    - [svgo](https://github.com/svg/svgo) (SVG Optimizer is a Nodejs-based tool for optimizing SVG vector graphics files.) svgo is bundled with svgo-loader
 
 #### Babel
   - [babel](http://babeljs.io/) (Babel is a generic multi-purpose compiler for JavaScript. Using Babel you can use the next generation of JavaScript, as well as the next generation of JavaScript tooling.)
-  - [React preset](http://babeljs.io/docs/plugins/preset-react/) (Strip flow types and transform JSX into createElement calls.)
-  - [ES2015 preset](http://babeljs.io/docs/plugins/preset-es2015/) (All you need to compile ES2015 to ES5)
-  - [Stage 1 preset](http://babeljs.io/docs/plugins/preset-stage-1/) (use stage 1 [and greater] plugins)
+  - [@babel/preset-react](http://babeljs.io/docs/plugins/preset-react/) (Strip flow types and transform JSX into createElement calls.)
+  - [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) (a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s).)
   - [.babelrc](http://babeljs.io/docs/usage/babelrc/) (Babel config file)
   - [babel-eslint](https://github.com/babel/babel-eslint) (ESLint using Babel as the parser.)
   - [babel-loader](https://github.com/babel/babel-loader) (Transpiling JavaScript files using Babel and webpack.)
@@ -104,7 +103,3 @@ $ npm run clean
 
 #### EditorConfig
   - [EditorConfig](http://editorconfig.org/) (EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs.)
-
-#### Git
-  - [git](https://git-scm.com/) (distributed version control system )
-  - [github](https://github.com/) (You know!)
